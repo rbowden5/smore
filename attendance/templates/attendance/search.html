@@ -1,0 +1,39 @@
+{% extends "attendance/layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block content %}
+
+    {% if results %}
+
+        {% if model == "adult" %}
+            
+            {% for result in results %}
+                <div>
+                    <a href="{% url 'attendance:adult_details' adult_id=result.id %}">
+                        {{ result }}
+                    </a>
+                </div>
+            {% endfor %}
+
+        {% else %}
+               
+                {% for result in results %}
+                    <div>
+                        <a href="{% url 'attendance:child_details' child_id=result.id %}">
+                            {{ result }}
+                        </a>
+                    </div>
+                {% endfor %}
+                
+        {% endif %}
+
+    {% else %}
+
+        No Results
+
+    {% endif %}
+
+{% endblock %}

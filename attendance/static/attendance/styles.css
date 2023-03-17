@@ -1,0 +1,293 @@
+html {
+    max-width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #cccccc;
+    border: red 3px solid;
+    width: 100%;
+}
+
+.header { grid-area: header; }
+.aside { grid-area: aside; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+
+.grid_container {
+    display: grid;
+    width: 100%;
+    grid-template-areas: 
+        'header header'
+        'intro intro'
+        'aside main'
+        'footer footer';
+    grid-template-columns: 20% 80%;
+    /* grid-template rows: 5% 10% 75% 10%; */
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: gray;
+    font-family: Lucinda, sans-serif;
+}
+
+.attendance_button {
+    background-color: gray;
+}
+
+.attendance_button:hover {
+    background-color: red;
+}
+
+div {
+    padding: .5rem;
+}
+
+.divider {
+    margin: 2px 0;
+    border-bottom: 1px solid gray;
+}
+
+fieldset div {
+    padding: 0.25rem;
+}
+
+.first_page {
+    display: block;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: center;
+    border: 2px solid blue;
+}
+
+footer div {
+    margin: 0.5rem;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    flex-direction: column; 
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+}
+
+.horizontal {
+    display: flex; 
+    flex-direction: row;
+    width: 70%;
+    position: relative;
+    justify-content: center;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+
+    /* When I figure out where to store pics in Django
+    background-image: url(intro_pic1.jpg); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+
+    background-color: lightblue;
+    position: relative;
+    z-index: 0;
+    color: #fff;
+    text-shadow: 0 - 5px #000;
+    font-family: Verdana, Lucinsa Sans, sans-serif;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 2%
+}
+
+.nav {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.nav ul {
+    display: flex;
+    background: gray;
+    list-style: none;
+    padding-left: 0;
+}
+
+.nav li {
+    display: block;
+    background: gray;
+    color: #fff;
+    padding: 1rem;
+    position: relative;
+    transition-duration: 0.3s;
+}
+
+.nav li:hover,
+.nav li:focus-within {
+    cursor: pointer;
+    background: red;
+    transform: scale(1.1);
+}
+
+.nav li:focus-within a {
+    outline: none;
+}
+
+/* hide the sub menu */
+.nav ul li ul {
+    background: inherit;
+    visibility: hidden;
+    opacity: 0;
+    min-width: 5rem;
+    position: absolute;
+    transition: all 0.5 ease;
+    margin-top: 1rem;
+    left: 0;
+    display: none;
+}
+
+/*show submenu on hover and focus */
+.nav ul li:hover > ul,
+.nav ul li:focus-within > ul,
+.nav ul li ul:hover,
+.nav ul li ul:focus {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    z-index: 1;
+}
+
+.nav ul li ul li {
+    width: 100%;
+}
+
+.nav a {
+    text-decoration: none;
+}
+
+/*Just for pics */
+.logo {
+    background-color: red;
+}
+
+p {
+    padding: 0.5rem;
+    /* border: 2px solid green; */
+}
+
+.page {
+    display: none;
+}
+
+.toggle_buttons ul {
+    display: flex;
+    list-style: none;
+}
+
+.toggle_buttons ul li {
+    display: block;
+    padding: 0.2rem;
+}
+
+.picture-text-flexbox {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    margin: 5%;
+    justify-content: center;
+}
+
+.picture-text-flexbox p {
+    float: right;
+}
+
+.picture-text-flexbox-reverse {
+    width: 90%;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 5%
+}
+
+.picture-text-flexbox-reverse p {
+    float: left;
+}
+
+#search {
+    display: block;
+}
+
+.small_container {
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.tiptop {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    flex-flow: row;
+}
+
+@media(max-width: 900px) {
+
+    body {
+        background-color: pink;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .aside {
+        display: none;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+    }
+
+    .picture-text-flexbox, .picture-text-flexbox-reverse {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tiptop {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+}

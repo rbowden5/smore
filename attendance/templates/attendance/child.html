@@ -1,0 +1,43 @@
+{% extends "attendance/layout.html" %}
+
+    {% block title %}
+        Child Details: {{ child }}
+    {% endblock %}
+
+    {% block content %}
+
+        <h1>Name: {{ child }}</h1>
+
+        <form method="post" action="{% url 'attendance:change_status' child.id %}">
+            {% csrf_token %}
+
+            <div class="small_container">
+                <label>Adult</label>
+                <select name="adult">
+                    {% for adult in adults %}
+                        <option value="{{ adult.id }}">{{ adult }}</option>
+                {% endfor %}
+                </select>
+            </div>
+
+            <div class="small_container">
+                <label>Staff</label>
+                <select name="staff">
+                    {% for staff in staffs %}
+                        <option value="{{ staff.id }}">{{ staff }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="small_container">
+                {% if child.attendance_status == 0 %}
+                    <button type="submit" class="attendance_button" value=1>Check In</button>
+                {% else %}
+                    <button type="submit" class="attendance_button" value=0>Check Out</button>
+                {% endif %}
+            </div>
+        </form>
+
+        <a href="{% url 'attendance:index' %}">Home</a>
+
+    {% endblock %}

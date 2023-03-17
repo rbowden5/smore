@@ -1,0 +1,61 @@
+{% extends "attendance/layout.html" %}
+{% load static %}
+
+{% block title %}
+Attendance
+{% endblock %}
+
+{% block content %}
+
+    <h1>Attendance</h1>
+    {% if message %}
+        {{ message }}
+    {% endif %}
+
+    <div class="toggle_buttons">
+        <ul>
+            <li><button class="page_button" data-page="search">Search</button></li>
+            <li><button class="page_button" data-page="in_attendance">All Children in Attendance</button></li>
+            <li><button class="page_button" data-page="all_children">All Children</button></li>
+        </ul>
+    </div>
+
+    <div class="page" class="first_page" id="search">
+        <form method="get" action="{% url 'attendance:search' %}">
+            <input type="text" name="q" />
+
+            Search by...
+            <input type="radio" name="t" value="adult"><label for="adult">adult</label>
+            <input type="radio" name="t" value="child"><label for="child">child</label>
+
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="page" id="in_attendance">
+        {% for present in presents %}
+
+            <div>
+                {{ present }}
+                <input type="checkbox">
+            </div>
+
+        {% endfor %}
+    </div>
+
+    <div class="page" id="all_children">
+        <div>
+            {% for child in children %}
+                <div>
+                    <a href="{% url 'attendance:child_details' child_id=child.id %}">
+                        {{ child }}
+                    </a>                
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

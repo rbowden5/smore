@@ -1,0 +1,30 @@
+{% extends "attendance/layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %} 
+
+
+    <h1>Register</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            {{ child_form.as_p }}
+
+            {{ adult_form.as_p }}
+
+            <div>
+                <input type="submit" />
+            </div>
+        </form>
+
+        <!-- This would work
+        <script>
+            alert('Hello world');
+        </script>
+        -->
+
+{% endblock %}

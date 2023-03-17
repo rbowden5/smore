@@ -1,0 +1,53 @@
+{% extends "attendance/layout.html" %}
+{% load static %}
+
+{% block title %}
+    Attendance History
+{% endblock %}
+
+{% block content %}
+
+<h1>Attendance History</h1>
+
+<table>
+    <tr>
+    <th>Child</th>
+    <th>Adult</th>
+    <th>Staff</th>
+    <th>Status</th>
+    <th>timestamp</th>
+    </tr>
+
+    {% for history in histories %}
+
+    <tr>
+        <td>{{ history.child }}</td>
+        <td>{{ history.adult }}</td>
+        <td>{{ history.staff }}</td>
+        <td>
+            {% if history.status == 0 %}
+                Out
+            {% else %}
+                In
+            {% endif %}
+        <td>
+        <td>{{ history.timestamp }}</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+<ul>
+    <li><button>Archive</button></li>
+</ul>
+
+<div class="archive">
+    <form method="post" action="">
+        {% csrf_token %}
+        <input type="text" name="table_title" />
+        <input type="submit" />
+    </form>
+</div>
+
+{% endblock %}

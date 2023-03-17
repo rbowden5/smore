@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <link rel="stylesheet" href="{% static 'attendance/styles.css' %}">
+        <script src="{% static 'attendance/scripts.js' %}"></script> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <title>
+            {% block title %}
+            {% endblock %}
+        </title>
+    </head>
+
+    <body>
+
+        <div class="grid_container">
+            <header class="header">
+                <div class="tiptop">
+                    <div class="logo">
+                       <!-- <img src="Firesdie\Resized Pics\logo.jpg" alt="logo"> -->
+                    </div>
+
+                    <nav class="nav">
+                        <ul class="nav_bar">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Day Camp</a>
+                                <ul>
+                                    <li><a href="#">Learn More</a></li>
+                                    <li><a href="#">Register</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="#">Plan a Visit</a></li>
+
+                            <li><a href="#">Retreats</a></li>
+
+                            <li><a href="#">Attendance</a>
+
+                                <ul>
+                                    <li><a href="#">Check In Page</a></li>
+                                    <li><a href="#">Present List</a></li>
+                                    <li><a href="#">History</a></li>
+                                </ul>
+
+                            <li><a href="#">Login</a></li>
+
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="intro">
+                    <div class="page_title">
+                        <h1>Camp Smore</h1>
+                    </div>
+
+                    <div class="page_title">
+                        <h2>Established 2025</h2>
+                    </div>
+                </div>
+            </header>
+
+            <aside class="aside">
+                <p>Amazing quote about camp changing life.</p>
+                <p>Obviously a quote from a parent.</p>
+                <p>Let's add one more quote.</p>
+            </aside>
+
+            <main class="main">
+
+                {% block content %}
+                {% endblock %}
+
+                <div class="toggle_buttons">
+                    <a href="{% url 'attendance:index' %}"><button>Attendance Home</button></a>
+                    <a href="{% url 'attendance:register' %}"><button>Register</button></a>
+                    <a href="{% url 'attendance:attendance_history' %}"><button>History</button></a>
+                </div>
+
+            </main>
+
+            <footer class="footer">
+                <div>
+                    <address>42 Wallaby Way, Sidney AR 12345</address>
+                </div>
+
+                <div>
+                    Phone Number: (555) 555-5555
+                </div>
+
+                <div>
+                    Email: <email> directors@site.com</email>
+                </div>
+                <div>
+                    Hours: M-F, 9:00AM - 4:00 PM
+                </div>
+            </footer>
+
+        </div>
+    </body>
+
+</html>
